@@ -5,7 +5,6 @@ public class Structure {
     public static final int MATRIX_SIZE = 3;
     public static final String playX="X";
     public static final String play0="0";
-    public static final String VALID_MOVES = "XO";
     private String matrix[][];
     public Structure(){
         matrix= new String[MATRIX_SIZE][MATRIX_SIZE];
@@ -33,20 +32,9 @@ public class Structure {
         }
     }
 
-    public static void main(String[] args) {
-        new Structure().test();
-    }
 
-    public void test(){
-        Structure structure = new Structure();
-        structure.parseLine("00X",0);
-        structure.parseLine("XX0",1);
-        structure.parseLine("0X0",2);
-        structure.printStructure();
-        structure.checkMatrix();
-    }
-
-    private void checkMatrix(){
+    public void checkMatrix(){
+        printStructure();
         if (checkMatrixHorizontalVerticallyDiagonal(playX)){
             System.out.println("YES");
             return;
@@ -106,6 +94,45 @@ public class Structure {
         }
         return false;
     }
+
+    public void testHorizontal(){
+        Structure structure = new Structure();
+        structure.parseLine("000",0);
+        structure.parseLine("XX0",1);
+        structure.parseLine("0X0",2);
+        structure.printStructure();
+        structure.checkMatrix();
+    }
+    public void testVertical(){
+        Structure structure = new Structure();
+        structure.parseLine("0XX",0);
+        structure.parseLine("XX0",1);
+        structure.parseLine("0X0",2);
+        structure.checkMatrix();
+    }
+    public void testDiagonalPositive(){
+        Structure structure = new Structure();
+        structure.parseLine("0XX",0);
+        structure.parseLine("X00",1);
+        structure.parseLine("XX0",2);
+        structure.checkMatrix();
+    }
+    public void testDiagonalNegative(){
+        Structure structure = new Structure();
+        structure.parseLine("0XX",0);
+        structure.parseLine("XX0",1);
+        structure.parseLine("X00",2);
+        structure.checkMatrix();
+    }
+
+    public static void main(String[] args) {
+
+        new Structure().testHorizontal();
+        new Structure().testVertical();
+        new Structure().testDiagonalPositive();
+        new Structure().testDiagonalNegative();
+    }
+
 }
 
 

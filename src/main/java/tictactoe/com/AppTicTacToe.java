@@ -30,7 +30,7 @@ public class AppTicTacToe
         structure.parseLine(line1,0);
         structure.parseLine(line1,1);
         structure.parseLine(line1,2);
-        structure.printStructure();
+        structure.checkMatrix();
     }
 }
 
